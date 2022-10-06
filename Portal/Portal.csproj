@@ -1,9 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\CourseTimeCalculator\CTCPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\CourseTimeCalculator\CTCPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CTC.Library\CTC.Library.csproj" />
+  </ItemGroup>
 
 </Project>

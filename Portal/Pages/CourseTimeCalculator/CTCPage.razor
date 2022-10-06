@@ -1,0 +1,90 @@
+﻿@page "/CourseTimeCalculator"
+@using CTC.Library
+@using CTC.Library.Models
+@using Microsoft.AspNetCore.Components
+@using Portal.Models.CTCModels
+
+
+@inject ICourseTimeCalculator TimeCalculator;
+
+<h3>Course Time Calculator</h3>
+<div>
+    <EditForm Model="@delimiter">
+        <div>
+            <p>Start delimiter</p>
+            <InputText @bind-Value="delimiter.Start" />
+            <p>Middle delimiter</p>
+            <InputText @bind-Value="delimiter.Middle" />
+            <p>End delimiter</p>
+            <InputText @bind-Value="delimiter.End" />
+        </div>
+    </EditForm>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3> Original text </h3>
+        <EditForm Model="@courseText" OnValidSubmit="HandleValidSubmit">
+            <div class="col-md-6">
+                <InputTextArea id="text" @bind-Value="courseText.text" style="min-width: 500px; min-height: 300px" />
+            </div>
+            <div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </EditForm>
+    </div>
+
+    <div class="col-md-4">
+        <h3> Top 10 Pre-processed data </h3>
+        <div class="text-body" style="min-width: 500px; max-height: 300px; max-width: 500px; max-height: 300px; border: 1px solid black">
+            <text>
+                @if (@TimeCalculator.PreProcessedData.Count > 0)
+                {
+                    <table>
+                        <tbody>
+                            @foreach (var line in @extractedData)
+                            {
+                                <tr>
+                                    <td>@line</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </text>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>Result</h3>
+        <p>Total course hours are: @hours</p>
+    </div>
+</div>
+
+@code {
+    private CTCModel courseText = new CTCModel();
+    private DelimiterModel delimiter = new DelimiterModel();
+    private int hours = 0;
+    private List<string> extractedData;
+    private bool isSubmitted = false;
+
+    private void HandleValidSubmit()
+    {
+        TimeCalculator.ProcessText(courseText.text, delimiter);
+
+        hours = (((int)TimeCalculator.TotalHours) / 60);
+
+        if (TimeCalculator.PreProcessedData.Count > 10)
+        {
+            extractedData = TimeCalculator.PreProcessedData.GetRange(0, 10);
+        }
+        else
+        {
+            extractedData = TimeCalculator.PreProcessedData;
+        }
+    }
+
+
+
+
+
+
+}
