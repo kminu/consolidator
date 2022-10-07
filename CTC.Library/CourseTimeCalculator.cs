@@ -22,11 +22,13 @@ public class CourseTimeCalculator : ICourseTimeCalculator
             int pTo = -1;
             if (pFrom >= 0)
             {
-                pTo = (line.Substring(pFrom).IndexOf(delimiter.End) + pFrom) + 3;
+                //string temp = line.Substring(pFrom + 1);
+                pTo = (line.Substring(pFrom + 1).IndexOf(delimiter.End) + (pFrom + 1));
             }
 
             if (pFrom >= 0 && pTo >= 0)
             {
+                //string result = line.Substring(pFrom + 1, pTo - (pFrom + 1)).Replace(delimiter.Middle, ".");
                 string result = line.Substring(pFrom + 1, pTo - (pFrom + 1)).Replace(delimiter.Middle, ".");
                 PreProcessedData.Add(result);
                 var isValidTime = double.TryParse(result, out double sectionHour);
