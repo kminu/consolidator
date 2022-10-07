@@ -3,21 +3,23 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 
-namespace Common.Library;
+namespace Common.Library.DataAccess;
 
 
 public class SqlDataAccess : IDisposable, IDataAccess
 {
     private readonly IConfiguration _config;
+    private readonly string _connectionStringName;
 
-    public SqlDataAccess(IConfiguration config)
+    public SqlDataAccess(IConfiguration config, string connectionStringName)
     {
         _config = config;
+        _connectionStringName = connectionStringName;
     }
 
-    public async Task<List<T>> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
+    public async Task<List<T>> LoadData<T, U>(string storedProcedure, U parameters)
     {
-        string connectionString = _config.GetConnectionString(connectionStringName);
+        string connectionString = _config.GetConnectionString(_connectionStringName);
 
         using IDbConnection connection = new SqlConnection(connectionString);
         var rows = await connection.QueryAsync<T>(
@@ -28,9 +30,9 @@ public class SqlDataAccess : IDisposable, IDataAccess
         return rows.ToList();
     }
 
-    public async Task<int> SaveData<T>(string storedProcedure, T parameters, string connectionStringName)
+    public async Task<int> SaveData<T>(string storedProcedure, T parameters)
     {
-        string connectionString = _config.GetConnectionString(connectionStringName);
+        string connectionString = _config.GetConnectionString(_connectionStringName);
 
         using IDbConnection connection = new SqlConnection(connectionString);
         return await connection.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
@@ -42,9 +44,9 @@ public class SqlDataAccess : IDisposable, IDataAccess
     private IDbTransaction _transaction;
     private bool isClosed = false;
 
-    public void StartTransaction(string connectionStringName)
+    public void StartTransaction()
     {
-        var connectionString = _config.GetConnectionString(connectionStringName);
+        var connectionString = _config.GetConnectionString(_connectionStringName);
 
         _connection = new SqlConnection(connectionString);
         _connection.Open();
@@ -107,4 +109,4 @@ public class SqlDataAccess : IDisposable, IDataAccess
         _connection = null;
     }
 }
-    
+
