@@ -22,7 +22,6 @@ public class CourseTimeCalculator : ICourseTimeCalculator
             int pTo = -1;
             if (pFrom >= 0)
             {
-                //string temp = line.Substring(pFrom + 1);
                 pTo = (line.Substring(pFrom + 1).IndexOf(delimiter.End) + (pFrom + 1));
             }
 

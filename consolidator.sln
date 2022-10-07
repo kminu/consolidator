@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTC.Library", "CTC.Library\CTC.Library.csproj", "{D458B9DE-FA31-40E0-8A4C-7840A12000F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTC.Library", "CTC.Library\CTC.Library.csproj", "{D458B9DE-FA31-40E0-8A4C-7840A12000F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTracker.Library", "TTracker.Library\TTracker.Library.csproj", "{BF7DA56D-4B29-405A-AC4A-2C3C24900322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTracker.Library", "TTracker.Library\TTracker.Library.csproj", "{BF7DA56D-4B29-405A-AC4A-2C3C24900322}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextConverter.Library", "TextConverter.Library\TextConverter.Library.csproj", "{D5C81023-DA0D-4948-84E1-67FD6F68FC01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextConverter.Library", "TextConverter.Library\TextConverter.Library.csproj", "{D5C81023-DA0D-4948-84E1-67FD6F68FC01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0A8A8507-B447-4514-9E23-AC91A4F68F7A}"
 EndProject
@@ -15,11 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F6D84918-FE1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{64EDE75D-62DE-4B35-B554-5828A542F914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{5F2135E7-ECA1-49BB-BDA3-B4865D097FD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal", "Portal\Portal.csproj", "{5F2135E7-ECA1-49BB-BDA3-B4865D097FD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consolidator.Api", "Consolidator.Api\Consolidator.Api.csproj", "{1ED8F11A-2BBB-4BD7-847E-CCB1AA3F301C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consolidator.Api", "Consolidator.Api\Consolidator.Api.csproj", "{1ED8F11A-2BBB-4BD7-847E-CCB1AA3F301C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Library", "Common.Library\Common.Library.csproj", "{67A1A6EA-B328-44A7-899E-5AB80B7818CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Library", "Common.Library\Common.Library.csproj", "{67A1A6EA-B328-44A7-899E-5AB80B7818CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{B4110E61-5DF4-49BD-B18B-2CF3900EB12C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MatchTracker", "MatchTracker\MatchTracker.sqlproj", "{CF8CD178-584C-4EAE-893F-A7B8595C75F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,12 @@ Global
 		{67A1A6EA-B328-44A7-899E-5AB80B7818CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A1A6EA-B328-44A7-899E-5AB80B7818CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A1A6EA-B328-44A7-899E-5AB80B7818CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +72,7 @@ Global
 		{5F2135E7-ECA1-49BB-BDA3-B4865D097FD7} = {64EDE75D-62DE-4B35-B554-5828A542F914}
 		{1ED8F11A-2BBB-4BD7-847E-CCB1AA3F301C} = {F6D84918-FE14-4FAE-9E73-A95980D177B4}
 		{67A1A6EA-B328-44A7-899E-5AB80B7818CB} = {0A8A8507-B447-4514-9E23-AC91A4F68F7A}
+		{CF8CD178-584C-4EAE-893F-A7B8595C75F8} = {B4110E61-5DF4-49BD-B18B-2CF3900EB12C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37D180BA-9294-43B6-9CEA-A8C5C567E84A}

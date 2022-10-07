@@ -1,10 +1,4 @@
 ﻿@page "/CourseTimeCalculator"
-@using CTC.Library
-@using CTC.Library.Models
-@using Microsoft.AspNetCore.Components
-@using Portal.Models.CTCModels
-
-
 @inject ICourseTimeCalculator TimeCalculator;
 
 <h3>Course Time Calculator</h3>
@@ -81,10 +75,4 @@
             extractedData = TimeCalculator.PreProcessedData;
         }
     }
-
-
-
-
-
-
 }
