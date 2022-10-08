@@ -9,12 +9,11 @@ namespace Common.Library.DataAccess;
 public class SqlDataAccess : IDisposable, IDataAccess
 {
     private readonly IConfiguration _config;
-    private readonly string _connectionStringName;
+    private readonly string _connectionStringName = "Default";
 
-    public SqlDataAccess(IConfiguration config, string connectionStringName)
+    public SqlDataAccess(IConfiguration config)
     {
         _config = config;
-        _connectionStringName = connectionStringName;
     }
 
     public async Task<List<T>> LoadData<T, U>(string storedProcedure, U parameters)

@@ -1,0 +1,57 @@
+﻿@page "/User"
+@using TTracker.Library.Data
+@using TTracker.Library.Models
+@inject IUserData userData
+
+
+<div class="row">
+    <h3>User List</h3>
+    <NavLink class="nav-link" href="User/Create">
+        <span class="oi oi-plus" aria-hidden="true"></span> Create
+    </NavLink>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in users)
+        {
+            <tr class="modal-body">
+                <td>
+                    @user.Id
+                </td>
+                <td>
+                    @user.FirstName
+                </td>
+                <td>
+                    @user.LastName
+                </td>
+                <td>
+                    @user.EmailAddress
+                </td>
+                <td>
+                    @user.CellphoneNumber
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    
+    private List<UserModel> users = new List<UserModel>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        users = await userData.GetPerson_All();
+    }
+}

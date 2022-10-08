@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9782c3b5-3b96-4d8c-b357-9dac191d1255</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,10 +13,26 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\CourseTimeCalculator\CTCPage.razor" />
+    <_ContentIncludedByDefault Remove="Pages\MatchTracker\CreateUserPage.razor" />
+    <_ContentIncludedByDefault Remove="Pages\MatchTracker\UserPage.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CTC.Library\CTC.Library.csproj" />
+    <ProjectReference Include="..\TTracker.Library\TTracker.Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\MatchTrackerData\" />
+    <Folder Include="StartupConfig\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\MatchTracker\UserPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\MatchTracker\CreateUserPage.razor" />
   </ItemGroup>
 
 </Project>

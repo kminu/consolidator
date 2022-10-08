@@ -6,7 +6,7 @@ using Common.Library.DataAccess;
 
 namespace TTracker.Library.Data;
 
-public class UserData
+public class UserData : IUserData
 {
     private readonly IDataAccess _dataAccess;
 
@@ -21,14 +21,14 @@ public class UserData
         p.Add("@LastName", user.LastName);
         p.Add("@EmailAddress", user.EmailAddress);
         p.Add("@CellphoneNumber", user.CellphoneNumber);
-        p.Add("@id",0,dbType:DbType.Int32, direction:ParameterDirection.Output);
+        p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         return _dataAccess.SaveData("dbo.spPeople_Insert", p);
     }
 
-    public Task<List<UserModel>> GetPerson_All()
+    public async Task<List<UserModel>> GetPerson_All()
     {
-        return _dataAccess.LoadData<UserModel, dynamic>("dbo.spPeople_GetAll", new { });
+        return await _dataAccess.LoadData<UserModel, dynamic>("dbo.spPeople_GetAll", new { });
     }
 
     public Task UpdatePerson(UserModel user)

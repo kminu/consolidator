@@ -6,7 +6,7 @@ using TTracker.Library.Models;
 
 namespace TTracker.Library.Data;
 
-public class PrizeData
+public class PrizeData : IPrizeData
 {
     private readonly IDataAccess _dataAccess;
 

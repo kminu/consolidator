@@ -1,0 +1,34 @@
+﻿@page "/User/Create"
+@using TTracker.Library.Models
+@using TTracker.Library.Data
+@inject IUserData UserData
+
+<h3>CreateUserPage</h3>
+
+<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
+    <div>
+        FirstName: <InputText id="firstName" @bind-Value="user.FirstName"/>
+    </div>
+    <div>
+        LastName: <InputText id="lLastName" @bind-Value="user.LastName" />
+    </div>
+    <div>
+        Email: <InputText id="emailAddress" @bind-Value="user.EmailAddress" />
+    </div>
+    <div>
+        CellPhone: <InputText id="cellPhone" @bind-Value="user.CellphoneNumber" />
+    </div>
+    <button class="btn btn-primary" type="submit">Create</button>
+</EditForm>
+
+@code {
+    private UserModel user = new UserModel();
+
+    private void HandleValidSubmit()
+    {
+        UserData.CreatePerson(user);
+        user = new UserModel();
+        
+
+    }
+}
