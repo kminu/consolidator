@@ -1,0 +1,53 @@
+﻿@page "/User/Edit/{UserId:int}"
+@using Microsoft.AspNetCore.Components
+@using TTracker.Library.Models
+@using TTracker.Library.Data
+@inject IUserData UserData
+@inject NavigationManager NavigationManager
+
+
+<h3>EditUserPage</h3>
+
+<EditForm Model="@User" OnValidSubmit="HandleValidSubmit">
+    <div>
+        FirstName: <InputText id="firstName" @bind-Value="User.FirstName" />
+    </div>
+    <div>
+        LastName: <InputText id="lLastName" @bind-Value="User.LastName" />
+    </div>
+    <div>
+        Email: <InputText id="emailAddress" @bind-Value="User.EmailAddress" />
+    </div>
+    <div>
+        CellPhone: <InputText id="cellPhone" @bind-Value="User.CellphoneNumber" />
+    </div>
+    <button class="btn btn-primary" type="submit">Edit</button>
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public int UserId { get; set; }
+
+    public UserModel User { get; set; } = new UserModel();
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        UserId = UserId;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        User = await UserData.GetPerson_ById(UserId);
+        
+    }
+
+    private void HandleValidSubmit()
+    {
+        UserData.UpdatePerson(User);
+        User = new UserModel();
+
+        NavigationManager.NavigateTo("User");
+    }
+}

@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Dapper;
 using System.Reflection;
+using System.Xml;
 using TTracker.Library.Models;
 using Common.Library.DataAccess;
 
@@ -29,6 +30,13 @@ public class UserData : IUserData
     public async Task<List<UserModel>> GetPerson_All()
     {
         return await _dataAccess.LoadData<UserModel, dynamic>("dbo.spPeople_GetAll", new { });
+    }
+
+    public async Task<UserModel> GetPerson_ById(int userId)
+    {
+        var output = await _dataAccess.LoadData<UserModel, dynamic>("dbo.spPeople_GetById",
+                                                                    new { id = userId});
+        return output.FirstOrDefault();
     }
 
     public Task UpdatePerson(UserModel user)

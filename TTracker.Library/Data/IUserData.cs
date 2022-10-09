@@ -6,6 +6,9 @@ namespace TTracker.Library.Data
     {
         Task CreatePerson(UserModel user);
         Task<List<UserModel>> GetPerson_All();
+        Task<UserModel> GetPerson_ById(int userId);
+        
+
         Task UpdatePerson(UserModel user);
     }
 }

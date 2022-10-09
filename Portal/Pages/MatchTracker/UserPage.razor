@@ -2,13 +2,19 @@
 @using TTracker.Library.Data
 @using TTracker.Library.Models
 @inject IUserData userData
+@inject NavigationManager Navigation
 
 
 <div class="row">
-    <h3>User List</h3>
+    <div class="row">
+        <h2>User List</h2>
+        <button class="btn btn-primary" style="max-width: 100px" @onclick="NavigateToCreate">Create</button>
+    </div>
+
+    @*
     <NavLink class="nav-link" href="User/Create">
-        <span class="oi oi-plus" aria-hidden="true"></span> Create
-    </NavLink>
+    <span class="oi oi-plus" aria-hidden="true"></span> Create
+    </NavLink>*@
 </div>
 
 <table class="table">
@@ -40,6 +46,9 @@
                 <td>
                     @user.CellphoneNumber
                 </td>
+                <td>
+                    <button class="btn btn-primary" @onclick="()=> NavigateToEdit(user.Id)">Edit</button>
+                </td>
             </tr>
         }
     </tbody>
@@ -47,11 +56,21 @@
 
 
 @code {
-    
+
     private List<UserModel> users = new List<UserModel>();
-    
+
     protected override async Task OnInitializedAsync()
     {
         users = await userData.GetPerson_All();
+    }
+
+    private void NavigateToCreate()
+    {
+        Navigation.NavigateTo("User/Create");
+    }
+
+    private void NavigateToEdit(int userId)
+    {
+        Navigation.NavigateTo($"/User/Edit/{userId}");
     }
 }

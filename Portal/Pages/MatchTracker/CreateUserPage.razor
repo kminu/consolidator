@@ -2,6 +2,7 @@
 @using TTracker.Library.Models
 @using TTracker.Library.Data
 @inject IUserData UserData
+@inject NavigationManager NavigationManager
 
 <h3>CreateUserPage</h3>
 
@@ -28,7 +29,7 @@
     {
         UserData.CreatePerson(user);
         user = new UserModel();
-        
 
+        NavigationManager.NavigateTo("User");
     }
 }
