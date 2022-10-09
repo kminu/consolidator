@@ -1,7 +1,49 @@
 ﻿@page "/Prize"
+@using TTracker.Library.Data
+@using TTracker.Library.Models
+@using Microsoft.AspNetCore.WebUtilities
+@inject IPrizeData PrizeData
+@inject NavigationManager NavigationManager
 
 <h3>PrizePage</h3>
+<div>
+    <button class="btn btn-primary" @onclick="NavigateToCreate">Create</button>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Place Number</th>
+        <th scope="col">Place Name</th>
+        <th scope="col">Prize Amount</th>
+        <th scope="col">Prize Percentage</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var prize in prizes)
+        {
+            <tr>
+                <td>@prize.PlaceNumber</td>
+                <td>@prize.PlaceName</td>
+                <td>@prize.PrizeAmount</td>
+                <td>@prize.PrizePercentage</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 
 @code {
-    
+
+    private List<PrizeModel> prizes = new List<PrizeModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        prizes = await PrizeData.GetPrize_All();
+    }
+
+    private void NavigateToCreate()
+    {
+        NavigationManager.NavigateTo("/Prize/Create");
+    }
+
 }

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\CourseTimeCalculator\CTCPage.razor" />
+    <_ContentIncludedByDefault Remove="Pages\MatchTracker\CreatePrizePage.razor" />
     <_ContentIncludedByDefault Remove="Pages\MatchTracker\CreateUserPage.razor" />
     <_ContentIncludedByDefault Remove="Pages\MatchTracker\UserPage.razor" />
   </ItemGroup>
@@ -33,6 +34,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\MatchTracker\CreateUserPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\MatchTracker\CreatePrizePage.razor" />
   </ItemGroup>
 
 </Project>

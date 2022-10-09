@@ -1,0 +1,43 @@
+﻿@page "/Prize/Create"
+@using TTracker.Library.Data
+@using TTracker.Library.Models
+@inject IPrizeData PrizeData
+@inject NavigationManager NavigationManager
+
+
+<h3>CreatePrizePage</h3>
+
+<EditForm Model="@prize" OnValidSubmit="HandleValidSubmit">
+    <div>
+        <div>
+            Place Number: <InputNumber id="placeNumber" @bind-Value="prize.PlaceNumber"></InputNumber>
+        </div>
+        <div>
+            Place Name: <InputText id="placeName" @bind-Value="prize.PlaceName"></InputText>
+        </div>
+        <div>
+            Prize Amount: <InputNumber id="PrizeAmount" @bind-Value="prize.PrizeAmount"></InputNumber>
+        </div>
+        <div>
+            Prize Percentage: <InputNumber id="PrizePercentage" @bind-Value="prize.PrizePercentage"></InputNumber>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+
+    private PrizeModel prize = new PrizeModel();
+
+    private void HandleValidSubmit()
+    {
+        PrizeData.CreatePrize(prize);
+
+        prize = new PrizeModel();
+        NavigationManager.NavigateTo("/Prize");
+    }
+
+}
